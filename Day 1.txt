@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+Day 1
+>>>>>>> a0b27984557092d1ecb6162d619b0422359ad2ab
 SIC TRAINING PRESIDENCY UNIVERSITY BENGALURU
 
 DAY1 MONDAY 23-06-2025
@@ -86,4 +90,8 @@ To update my remote repo w.r.t. local repo:
 
 1. stage	2. commit 	3. push
 
+<<<<<<< HEAD
 $ git add 
+=======
+$ git add 
+>>>>>>> a0b27984557092d1ecb6162d619b0422359ad2ab

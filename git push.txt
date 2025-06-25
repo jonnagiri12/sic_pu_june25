@@ -1,0 +1,3 @@
+git add "file name with type of file Example : Day 1.txt"
+git commit -m "message which has to be displayed "
+git push origin main
