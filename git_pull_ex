@@ -1,1 +1,6 @@
 this file is created in remote repo, to have a idea about pull it to the local repo
+git pull syntax : 
+git pull
+---------
+use of git pull is pulling the data from server(remote repo) to local files and imp is which is not there in local only comes from the server 
+which is in local and server that file will not come to local bt callinf git pull
