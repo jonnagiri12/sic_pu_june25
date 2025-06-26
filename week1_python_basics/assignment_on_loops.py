@@ -80,3 +80,18 @@ elif number >= 3:
         n2 = n3
         
     print(n2)
+
+# 6. Find sum of thye series n - n2/3 + n4/5 - n8/7 .... m terms (1<=n<=4 and 2<=m<=10)
+
+n = int(input("Enter n value : "))
+m = int(input("Enter m value : "))
+
+sum_of_series = 0
+if n >= 1 and n <= 4 and m >= 2 and m <= 10:
+        for i in range(m):
+            numerator = n ** (2*i)
+            denominator = 2*i + 1
+            sign = (-1)**i
+            sum_of_series += (numerator/denominator)*sign
+            
+print(sum_of_series)
