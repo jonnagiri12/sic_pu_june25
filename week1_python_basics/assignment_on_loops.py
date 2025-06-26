@@ -88,10 +88,73 @@ m = int(input("Enter m value : "))
 
 sum_of_series = 0
 if n >= 1 and n <= 4 and m >= 2 and m <= 10:
+        if m == 1:
+            print(n)
         for i in range(m):
-            numerator = n ** (2*i)
+            numerator = n**2**i
             denominator = 2*i + 1
             sign = (-1)**i
             sum_of_series += (numerator/denominator)*sign
             
 print(sum_of_series)
+
+# 7. Print the following shapes by accepting number of lines :
+
+# A. Right Angled Triangle : 
+number_of_lines = int(input("Enter number to print a right angled triangle : ")) 
+
+for i in range(1, number_of_lines+1):
+    print("*" * i)
+
+# B. Equi lateral Triangle
+number_of_lines = int(input("Enter number to print a Equi lateral Triangle : ")) 
+
+for i in range(1, number_of_lines+1):
+    spaces = number_of_lines-i
+    stars = 2*i-1
+    print(" " * spaces, "*" * stars)
+
+# C. Hollow Square
+number_of_lines = int(input("Enter number to print a Equi lateral Triangle : ")) 
+
+for i in range(1, number_of_lines+1):
+    spaces = number_of_lines-2
+    if i == 1 or i == number_of_lines:
+        print("* " * number_of_lines)
+    else:
+        print("* " + " " * 2*spaces + "* ")
+
+# D. Hollow Rhombus
+
+number_of_lines = int(input("Enter number to print a Equi lateral Triangle : ")) 
+
+for i in range(1, number_of_lines+1):
+    front_spaces = number_of_lines-i
+    spaces = 2*(number_of_lines-2)
+    if i == 1 or i == number_of_lines:
+        print(" " * front_spaces, "* " * number_of_lines)
+    else:
+        print(" " * front_spaces, "* " + " " * spaces + "* ")
+
+# 8. Find sum of the Even placed digits in the given number.
+
+number = int(input("Enter number : "))
+str_num = str(number)
+s = 0
+for i in range(len(str_num)):
+    if i%2 == 0:
+        s += int(str_num[i])
+
+print(s)
+
+# 9. Find sum of the Odd placed Even digits in the given number.
+
+number = int(input("Enter number : "))
+str_num = str(number)
+s = 0
+for i in range(len(str_num)):
+    if i%2 != 0:
+        if int(str_num[i])%2 == 0:
+            s += int(str_num[i])
+
+print(s)
