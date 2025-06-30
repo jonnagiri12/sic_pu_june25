@@ -15,3 +15,12 @@ print("State                      Capital")
 print("------------------------------------")
 for i in range(len(state_name)):
     print("{:25} {:28}".format(state_name[i], capital_name[i]))
+
+states = ["Arunachal Pradesh : Itanagar", "Assam : Dispur", "Manipur: Imphal", "Meghalaya: Shillong", "Mizoram: Aizawl", 
+"Nagaland: Kohima", "Tripura: Agartala"]
+
+# print("State                      Capital")
+# print("------------------------------------")
+# for i in states:
+#     state, capital = i.split(":")
+#     print("{:25} {:28}".format(state, capital))
