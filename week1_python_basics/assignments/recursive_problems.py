@@ -26,3 +26,13 @@ fibo(5, 1, 2)
 #     return nth_fibo(number-1) + nth_fibo(number-2)
 
 # print(nth_fibo(5))
+
+# 3. sum of digits in a given number 
+
+def sum_of_digits (num):
+    if num == 0:
+        return 0
+    return (num%10) + sum_of_digits(num//10)
+
+number = int(input("Enter number to get sum of digits : "))
+print(sum_of_digits(number))
