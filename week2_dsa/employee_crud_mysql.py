@@ -1,4 +1,5 @@
 import pymysql
+from pymysql import Error as PyMySQL_Error
 
 def connect_db():
     connection = None
@@ -16,7 +17,7 @@ def disconnect_db(connection):
     except:
         print('Database disconnection failed')
 
-def creat_db():
+def create_db():
     query = 'create database IF NOT EXISTS sheshadri_db'
     connection = connect_db()
     try:
@@ -30,15 +31,7 @@ def creat_db():
 
 
 def create_table():
-    query = 'create table IF NOT EXISTS employees(id int primary key auto_increment,
-name			varchar(30)	not null,
-designation		varchar(30)	,
-phone_number	bigint		unique,
-salary			float		,
-commission		float		default(0),
-years_of_experience tinyint	,
-technology		varchar(30)	not null,
-)'
+    query = 'create table IF NOT EXISTS employees(id int primary key auto_increment, name varchar(50) not null, designation varchar(30), phone_number bigint unique, salary float)'
     connection = connect_db()
     try:
         cursor = connection.cursor()
@@ -47,7 +40,7 @@ technology		varchar(30)	not null,
         cursor.close()
         disconnect_db(connection)
     except:
-        print('Table creation failed')
+        print("Table creation failed")
 
 def read_all_employees():
     query = 'select * from employees'
@@ -55,7 +48,7 @@ def read_all_employees():
     try:
         cursor = connection.cursor()
         cursor.execute(query)
-        rows = cursor.fetchAll()
+        rows = cursor.fetchll()
         for row in rows:
             print(row)
         print('All rows retrived')
@@ -72,8 +65,8 @@ def read_all_employees():
 
 # disconnect_db(connection)
 
-# creat_db()
+# create_db()
 
 create_table()
 
-# read_all_employees()
+read_all_employees()
