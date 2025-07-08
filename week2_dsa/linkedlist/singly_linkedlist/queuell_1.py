@@ -15,9 +15,9 @@ class Queue(): #Insert first remove last
     def __init__(self):
         self.front = None
 
-    def insert_node_first(self):
-        student = Student()
-        data = student.create_student()
+    def insert_node_first(self, data):
+        # student = Student()
+        # data = student.create_student()
         node = Node(data)
      
         if self.front == None:
@@ -26,6 +26,23 @@ class Queue(): #Insert first remove last
         
         node.link = self.front
         self.front = node
+
+    def insert_at_position(self, data, position):
+        if position == 1:
+            self.insert_node_first(data)
+            return
+        
+        node = Node(data)
+
+        pos = 1
+        curr_node = self.front
+        while pos < position-1 and curr_node != None:
+            curr_node = curr_node.link
+            pos += 1
+        next_nodes = curr_node.link
+        curr_node.link = node
+        node.link = next_nodes
+        
 
     def delete_node_last(self):
         if self.front == None:
@@ -51,12 +68,15 @@ class Queue(): #Insert first remove last
         
         temp = self.front
         while temp != None:
-            print(temp.data)
+            print(temp.data, end = "->")
             temp = temp.link
+
+        print("END")
         
 queue = Queue()
-queue.insert_node_first()
-queue.insert_node_first()
-queue.insert_node_first()
+queue.insert_node_first(10)
+queue.insert_node_first(20)
+queue.insert_node_first(30)
 # queue.delete_node_last()
+queue.insert_at_position(40, 1)
 queue.print()
