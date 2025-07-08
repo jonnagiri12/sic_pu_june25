@@ -16,6 +16,7 @@ class Student():
         return student_details
     
 class Stack():
+    size = 0
     def __init__(self):
         self.front = None
         self.rear = None
@@ -24,6 +25,7 @@ class Stack():
         student = Student()
         data = student.create_student()
         node = Node(data)
+        self.size += 1
 
         if self.front == None:
             self.front = node
@@ -41,7 +43,8 @@ class Stack():
         if self.front == None:
             print("Stack is empty, Delection cant done.")
             return
-
+        
+        self.size -= 1
         if self.front.next == None:
             self.front = None
             self.rear = None
@@ -51,11 +54,69 @@ class Stack():
         self.rear.next = None
 
         print("Delection of node done at last.")
+
+    def insert_at_position(self, position):
+        if position < 1 or position > self.size+1:
+            print("Invaild position to Insert.")
+            return
+        
+        if position == 1:
+            self.insert_node_first()
+            return
+        
+        if self.size == position-1:
+            self.insert_node_last()
+            return
+
+        student = Student()
+        data = student.create_student()
+        node = Node(data)
+        self.size += 1
+
+        pos = 1
+        curr_node = self.front
+        while pos < position-1 and curr_node != None:
+            curr_node = curr_node.next
+            pos += 1
+        next_nodes = curr_node.next
+        curr_node.next = node
+        node.prev = curr_node
+        node.next = next_nodes
+        next_nodes.prev = node
+        print("Insertion of node done at", position)
+
+    def delete_at_position(self, position):
+        if position < 1 or position > self.size:
+            print("Invaild position to Delete.")
+            return
+        
+        if position == 1:
+            self.delete_node_first()
+            return
+        
+        if self.size == position:
+            self.delete_node_last()
+            return
+        
+        self.size -= 1
+        pos = 1
+        curr_node = self.front
+        while pos < position-1 and curr_node != None:
+            curr_node = curr_node.next
+            pos += 1
+        next_node = curr_node.next
+        next_nodes = next_node.next
+        curr_node.next = next_nodes
+        next_nodes.prev = curr_node
+
+        print("Delection of node done at", position)
     
     def delete_node_first(self):
         if self.front == None:
             print("Stack is Empty, Delection Cant done.")
             return
+        
+        self.size -= 1
 
         if self.front.next == None:
             self.front = None
@@ -71,6 +132,7 @@ class Stack():
         student = Student()
         data = student.create_student()
         node = Node(data)
+        self.size += 1
 
         if self.front == None:
             self.front = node
@@ -122,4 +184,8 @@ stack.insert_node_first()
 stack.insert_node_last()
 stack.delete_node_last()
 stack.delete_node_first()
+stack.insert_at_position(1)
+stack.insert_at_position(4)
+stack.insert_at_position(10)
+stack.print_list_forward()
 stack.print_list_backward()
