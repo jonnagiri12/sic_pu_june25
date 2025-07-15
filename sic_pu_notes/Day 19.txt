@@ -1,0 +1,17 @@
+SESSION-19 MONDAY 14-07-2025
+
+Problem Statement (Abstract)
+Index
+Description 	  (Detailed)
+Data with in the problem and relevant info and the O/P and purpose and outcome and benefits.
+Plan
+Design (Diagrams)
+Implemnetation
+Code & explanation (comments, definitions, explanation)
+O/P screenshots
+Closure (Brief of the project)
+Bibliography
+
+
+Most Important Git Repo Link for your preparation for Placement Preparation
+https://github.com/gmaheswaranmca/au-guvi
