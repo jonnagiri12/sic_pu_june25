@@ -1,0 +1,2 @@
+Note:
+* To Run the Program(.zip file) we should extract file to the system first and continue.
