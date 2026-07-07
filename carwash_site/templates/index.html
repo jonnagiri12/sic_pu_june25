@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SudsFlow Analytics — Car Wash Sales Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+  <header class="header">
+    <div class="foam-stripe"></div>
+    <div class="header-inner">
+      <div class="brand">
+        <span class="brand-mark">🚿</span>
+        <span class="brand-name">SudsFlow<span class="brand-name-accent">Analytics</span></span>
+      </div>
+      <div class="brand-tag">Revenue flows like water — this is where it went.</div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO / SIGNBOARD -->
+    <section class="signboard">
+      <div class="signboard-grid" id="kpi-grid">
+        <div class="kpi-card">
+          <span class="kpi-label">Total Revenue · 2025</span>
+          <span class="kpi-value" id="kpi-revenue">—</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-label">Total Washes</span>
+          <span class="kpi-value" id="kpi-washes">—</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-label">Avg Ticket</span>
+          <span class="kpi-value" id="kpi-avg">—</span>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-label">Unique Customers</span>
+          <span class="kpi-value" id="kpi-customers">—</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- MONTHLY REVENUE + DISCOUNT/SURCHARGE LANES -->
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Monthly Revenue</h2>
+        <p class="panel-sub">Twelve lanes, twelve months — see where the wash ran slow or surged.</p>
+      </div>
+      <div class="panel-body split">
+        <div class="chart-box">
+          <canvas id="monthlyChart"></canvas>
+        </div>
+        <div class="lane-cards">
+          <div class="lane-card lane-discount">
+            <span class="lane-tag">DISCOUNT LANE</span>
+            <span class="lane-month" id="discount-month">—</span>
+            <span class="lane-amount" id="discount-amount">—</span>
+            <p class="lane-note">Lowest revenue month — a good candidate for a promo push.</p>
+          </div>
+          <div class="lane-card lane-surcharge">
+            <span class="lane-tag">SURCHARGE LANE</span>
+            <span class="lane-month" id="surcharge-month">—</span>
+            <span class="lane-amount" id="surcharge-amount">—</span>
+            <p class="lane-note">Highest revenue month — demand can support a premium rate.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TIME OF DAY -->
+    <section class="panel panel-alt">
+      <div class="panel-head">
+        <h2>Sales by Time of Day</h2>
+        <p class="panel-sub">When customers actually pull into the bay.</p>
+      </div>
+      <div class="panel-body split reverse">
+        <div class="chart-box small">
+          <canvas id="dayPartChart"></canvas>
+        </div>
+        <div id="daypart-legend" class="daypart-legend"></div>
+      </div>
+    </section>
+
+    <!-- CUSTOMERS -->
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Customers</h2>
+        <p class="panel-sub">Who to reward, and who's leading the loyalty board.</p>
+      </div>
+      <div class="panel-body split">
+        <div class="table-card">
+          <h3>Coupon Candidates <span class="badge badge-brass">Top 5 spend</span></h3>
+          <table class="data-table" id="coupon-table">
+            <thead>
+              <tr><th>Customer</th><th>Last Visit</th><th>Total Spent</th></tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <div class="table-card">
+          <h3>Customer Ranking <span class="badge badge-teal">Leaderboard</span></h3>
+          <table class="data-table" id="ranking-table">
+            <thead>
+              <tr><th>#</th><th>Customer</th><th>Total Spent</th></tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>Built from the original Samsung Innovative Campus car-wash analytics project — CLI → SQL → Web.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

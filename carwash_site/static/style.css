@@ -1,0 +1,346 @@
+:root {
+  --deep: #0E3A45;
+  --deep-2: #0A2C35;
+  --foam: #EAF7F6;
+  --foam-2: #FFFFFF;
+  --blue: #1E9CB0;
+  --blue-light: #6FC7D4;
+  --brass: #C99A3E;
+  --coral: #E4572E;
+  --ink: #0B2027;
+  --ink-soft: #4C6470;
+  --border: rgba(11, 32, 39, 0.09);
+  --shadow: 0 8px 24px rgba(11, 58, 69, 0.08);
+  --radius: 14px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--foam);
+  color: var(--ink);
+  font-family: 'IBM Plex Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, .brand-name, .kpi-value, .lane-month {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+/* ---------- HEADER ---------- */
+
+.header {
+  background: var(--deep);
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 6px;
+}
+
+.foam-stripe {
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 200%;
+  height: 6px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--blue) 0px, var(--blue) 40px,
+    var(--brass) 40px, var(--brass) 80px,
+    var(--blue-light) 80px, var(--blue-light) 120px
+  );
+  animation: flow 6s linear infinite;
+  opacity: 0.9;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .foam-stripe { animation: none; }
+}
+
+@keyframes flow {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 28px 24px 22px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand-mark { font-size: 1.6rem; }
+
+.brand-name {
+  color: var(--foam-2);
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: -0.01em;
+}
+
+.brand-name-accent {
+  color: var(--blue-light);
+  font-weight: 500;
+  margin-left: 6px;
+}
+
+.brand-tag {
+  color: rgba(234, 247, 246, 0.6);
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+/* ---------- SIGNBOARD / KPIs ---------- */
+
+.signboard {
+  max-width: 1100px;
+  margin: -20px auto 0;
+  padding: 0 24px;
+}
+
+.signboard-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  background: var(--deep-2);
+  border-radius: var(--radius);
+  padding: 22px;
+  box-shadow: var(--shadow);
+}
+
+.kpi-card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 4px 12px;
+  border-left: 2px solid rgba(111, 199, 212, 0.25);
+}
+
+.kpi-card:first-child { border-left: none; }
+
+.kpi-label {
+  color: rgba(234, 247, 246, 0.55);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 500;
+}
+
+.kpi-value {
+  color: var(--foam-2);
+  font-size: 1.9rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- PANELS ---------- */
+
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 24px 20px;
+}
+
+.panel {
+  margin-bottom: 44px;
+}
+
+.panel-head h2 {
+  margin: 0 0 4px;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.panel-sub {
+  margin: 0 0 20px;
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+}
+
+.panel-body.split {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 24px;
+  align-items: stretch;
+}
+
+.panel-body.split.reverse {
+  grid-template-columns: 1fr 1.4fr;
+}
+
+.chart-box {
+  background: var(--foam-2);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  padding: 20px;
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+}
+
+.chart-box.small { min-height: 260px; }
+
+/* ---------- LANE CARDS ---------- */
+
+.lane-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.lane-card {
+  border-radius: var(--radius);
+  padding: 20px;
+  color: var(--foam-2);
+  position: relative;
+  overflow: hidden;
+}
+
+.lane-discount { background: linear-gradient(135deg, #157A8C, var(--deep)); }
+.lane-surcharge { background: linear-gradient(135deg, var(--coral), #A93A1D); }
+
+.lane-tag {
+  display: block;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+  opacity: 0.75;
+  margin-bottom: 6px;
+}
+
+.lane-month {
+  display: block;
+  font-size: 1.7rem;
+  font-weight: 700;
+}
+
+.lane-amount {
+  display: block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 1rem;
+  opacity: 0.9;
+  margin-top: 2px;
+}
+
+.lane-note {
+  margin: 10px 0 0;
+  font-size: 0.82rem;
+  opacity: 0.85;
+  line-height: 1.4;
+}
+
+/* ---------- ALT PANEL ---------- */
+
+.panel-alt {
+  background: var(--foam-2);
+  border-radius: 20px;
+  padding: 32px;
+  border: 1px solid var(--border);
+}
+
+.daypart-legend {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 14px;
+}
+
+.legend-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.95rem;
+}
+
+.legend-dot {
+  width: 12px; height: 12px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+.legend-label { flex: 1; font-weight: 500; }
+.legend-value { font-family: 'IBM Plex Mono', monospace; color: var(--ink-soft); font-size: 0.85rem; }
+
+/* ---------- TABLES ---------- */
+
+.table-card {
+  background: var(--foam-2);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  padding: 20px;
+}
+
+.table-card h3 {
+  margin: 0 0 14px;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.badge {
+  font-size: 0.65rem;
+  padding: 3px 8px;
+  border-radius: 20px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.badge-brass { background: rgba(201, 154, 62, 0.15); color: #9c7726; }
+.badge-teal { background: rgba(30, 156, 176, 0.15); color: #14707e; }
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.data-table th {
+  text-align: left;
+  padding: 8px 6px;
+  color: var(--ink-soft);
+  font-weight: 500;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-bottom: 1px solid var(--border);
+}
+
+.data-table td {
+  padding: 10px 6px;
+  border-bottom: 1px solid var(--border);
+  font-variant-numeric: tabular-nums;
+}
+
+.data-table tr:last-child td { border-bottom: none; }
+
+/* ---------- FOOTER ---------- */
+
+.footer {
+  text-align: center;
+  padding: 30px 20px 40px;
+  color: var(--ink-soft);
+  font-size: 0.82rem;
+}
+
+/* ---------- RESPONSIVE ---------- */
+
+@media (max-width: 780px) {
+  .signboard-grid { grid-template-columns: repeat(2, 1fr); }
+  .panel-body.split, .panel-body.split.reverse {
+    grid-template-columns: 1fr;
+  }
+  .kpi-card { border-left: none; }
+}
